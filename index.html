@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+    <link rel="stylesheet" href="./src/styles/style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <form id="form-add-todo">
+        <input id="input-add-todo" type="text" name="todo" placeholder="Tambahkan list todo" />
+        <button type="submit">Tambah</button>
+      </form>
+
+      <div class="todo-list">
+        <ul class="uncompleted-todo-list">
+          <li>
+            <p>Uncompleted Todo List</p>
+            <div class="action-button">
+              <button class="btn-done">Done</button>
+              <button class="btn-remove">Remove</button>
+            </div>
+          </li>
+        </ul>
+        <ul class="completed-todo-list">
+          <li>
+            <p>Completed Todo List</p>
+            <div class="action-button">
+              <button class="btn-undo">Undo</button>
+              <button class="btn-remove">Remove</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>

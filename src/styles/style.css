@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.app {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#form-add-todo {
+  margin-block: 40px;
+}
+
+.todo-list {
+  width: 80%;
+  display: flex;
+  gap: 20px;
+}
+
+.completed-todo-list,
+.uncompleted-todo-list {
+  width: 50%;
+}
+
+.uncompleted-todo-list li {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(230, 248, 255);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.completed-todo-list li {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(227, 255, 227);
+  padding: 20px;
+  border-radius: 10px;
+}
