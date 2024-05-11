@@ -1,6 +1,24 @@
 const todos = [
-  { id: 1, text: "Satu", isComplete: true },
-  { id: 2, text: "Dua", isComplete: false },
+  {
+    id: 1,
+    text: "Belajar Dasar HTML ",
+    isComplete: true,
+  },
+  {
+    id: 2,
+    text: "Belajar Advance HTML",
+    isComplete: false,
+  },
+  {
+    id: 3,
+    text: "Belajar Git",
+    isComplete: false,
+  },
+  {
+    id: 4,
+    text: "Belajar Basic Javascript",
+    isComplete: false,
+  },
 ];
 
 const generateId = () => {
@@ -32,37 +50,39 @@ const handleRemoveButton = (id) => {
   }
 };
 
-const createButtonEl = (text, classes) => {
+const createButtonEl = (text, className) => {
   const buttonEl = document.createElement("button");
   buttonEl.innerText = text;
-  classes.forEach((className) => buttonEl.classList.add(className));
+  buttonEl.setAttribute("class", className);
   return buttonEl;
 };
 
 const createTodoEL = (todo) => {
-  const newTodo = document.createElement("li");
+  const todoEl = document.createElement("li");
   const todoText = document.createElement("p");
   todoText.innerText = todo.text;
 
   const actionButtonContainer = document.createElement("div");
-  const doneButton = createButtonEl("Done", ["btn-done"]);
+  actionButtonContainer.setAttribute("class", "todo-button-container");
+
+  const doneButton = createButtonEl("Done", "btn btn-success");
   doneButton.addEventListener("click", () => {
     handleDoneButton(todo.id);
   });
 
-  const removeButton = createButtonEl("Remove", ["btn-remove"]);
+  const removeButton = createButtonEl("Remove", "btn btn-danger");
   removeButton.addEventListener("click", () => {
     handleRemoveButton(todo.id);
   });
 
-  const undoButton = createButtonEl("Undo", ["btn-undo"]);
+  const undoButton = createButtonEl("Undo", "btn btn-info");
   undoButton.addEventListener("click", () => {
     handleUndoButton(todo.id);
   });
 
   actionButtonContainer.append(todo.isComplete ? undoButton : doneButton, removeButton);
-  newTodo.append(todoText, actionButtonContainer);
-  return newTodo;
+  todoEl.append(todoText, actionButtonContainer);
+  return todoEl;
 };
 
 const renderTodoList = () => {
@@ -78,7 +98,7 @@ const renderTodoList = () => {
   });
 };
 
-const createData = (text) => {
+const createPayload = (text) => {
   return {
     id: generateId(),
     text,
@@ -87,16 +107,17 @@ const createData = (text) => {
 };
 
 const handleSubmitForm = () => {
-  const form = document.getElementById("form-add-todo");
+  const form = document.getElementById("todo-form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const input = document.getElementById("input-add-todo");
-    const data = createData(input.value);
+    const input = document.getElementById("todo-input");
+    const payload = createPayload(input.value);
     input.value = "";
-    todos.push(data);
+    todos.push(payload);
     renderTodoList();
   });
 };
+
 window.addEventListener("DOMContentLoaded", () => {
   renderTodoList();
   handleSubmitForm();
